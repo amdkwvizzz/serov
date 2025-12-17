@@ -1,0 +1,165 @@
+/* ===== Сброс ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* ===== Контейнер телефона ===== */
+.phone-container {
+  width: 500px;   /* чуть больше */
+  height: 900px;  /* чуть выше */
+  background: #000;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 50px rgba(0,0,0,0.7);
+
+}
+
+/* ===== Feed ===== */
+.feed {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+/* ===== Каждый шорт ===== */
+.short {
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: start;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.short video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== Инфо блок ===== */
+.info {
+  position: absolute;
+  bottom: 80px;
+  left: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 65%;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.short.active .info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.subscribe {
+  background-color: red;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 12px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.3s;
+}
+
+.subscribe:hover {
+  background-color: #ff4d4d;
+}
+
+.info b {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.info p {
+  font-size: 0.9rem;
+  color: #ddd;
+  line-height: 1.2;
+  overflow-wrap: break-word;
+}
+
+/* ===== Блок действий справа ===== */
+.actions {
+  position: absolute;
+  right: 12px;
+  bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.short.active .actions {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.actions button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.actions button:hover {
+  transform: scale(1.2);
+}
+
+/* ===== Скроллбар ===== */
+.feed::-webkit-scrollbar {
+  width: 4px;
+}
+
+.feed::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+/* ===== Адаптивность ===== */
+@media (max-width: 400px) {
+  .phone-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+  .info {
+    bottom: 60px;
+    left: 8px;
+  }
+  .actions {
+    right: 8px;
+    bottom: 60px;
+  }
+}
